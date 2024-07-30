@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Calendar } from "lucide-react";
+import blogImage from "../assets/brg.jpg";
+import blogImage1 from "../assets/bg.png";
+import blogImage2 from "../assets/brg2.jpg";
 
 const NewsWrapper = styled.div`
   display: grid;
@@ -69,7 +72,7 @@ const NewsLink = styled(Link)`
 
 const newsItems = [
   {
-    image: "/api/placeholder/400/200",
+    image: blogImage,
     title: "YAgrF Launches New Training Program for Young Farmers",
     date: "2024-07-15",
     excerpt:
@@ -77,7 +80,7 @@ const newsItems = [
     link: "/news/new-training-program",
   },
   {
-    image: "/api/placeholder/400/200",
+    image: blogImage1,
     title: "Success Story: YAgrF Graduate Wins National Agripreneur Award",
     date: "2024-07-10",
     excerpt:
@@ -85,7 +88,7 @@ const newsItems = [
     link: "/news/graduate-wins-award",
   },
   {
-    image: "/api/placeholder/400/200",
+    image: blogImage2,
     title:
       "YAgrF Partners with Local Schools to Promote Agricultural Education",
     date: "2024-07-05",

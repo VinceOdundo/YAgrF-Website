@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import propImage from "../assets/Reagan O pic.jpg";
+import propImage1 from "../assets/human pic.jpg";
+import propImage2 from "../assets/edwin photo.jpg";
 
 const StoriesWrapper = styled.div`
   position: relative;
@@ -66,19 +69,19 @@ const NavButton = styled.button`
 
 const stories = [
   {
-    image: "/api/placeholder/150/150",
+    image: propImage,
     quote:
       "YAgrF has given me the skills and confidence to start my own sustainable farm. I'm now able to support my family and contribute to my community's food security.",
     author: "Jane Muthoni, 24",
   },
   {
-    image: "/api/placeholder/150/150",
+    image: propImage2,
     quote:
       "Through the Youth Agri-Force program, I've learned innovative farming techniques that have doubled my crop yield. I'm proud to be part of Kenya's agricultural transformation.",
     author: "David Ochieng, 22",
   },
   {
-    image: "/api/placeholder/150/150",
+    image: propImage1,
     quote:
       "YAgrF's mentorship program connected me with experienced farmers who guided me in setting up my agribusiness. Their support has been invaluable in my journey.",
     author: "Grace Wanjiru, 26",
