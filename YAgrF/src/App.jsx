@@ -3,14 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
-import Header from "./components/Header.js";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ProgramsPage from "./pages/ProgramsPage";
-import GetInvolvedPage from "./pages/GetInvolvedPage";
+{
+  /*import GetInvolvedPage from "./pages/GetInvolvedPage";
 import NewsPage from "./pages/NewsPage";
-import ContactPage from "./pages/ContactPage";
+import ContactPage from "./pages/ContactPage";*/
+}
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -54,9 +56,9 @@ const App = () => {
             <Route exact path="/" component={HomePage} />
             <Route path="/about" component={AboutPage} />
             <Route path="/programs" component={ProgramsPage} />
-            <Route path="/get-involved" component={GetInvolvedPage} />
+            {/*  <Route path="/get-involved" component={GetInvolvedPage} />
             <Route path="/news" component={NewsPage} />
-            <Route path="/contact" component={ContactPage} />
+            <Route path="/contact" component={ContactPage} /> */}
           </Switch>
         </MainContent>
         <Footer />
