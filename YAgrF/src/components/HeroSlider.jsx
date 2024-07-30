@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import brgImage from "../assets/brg.jpg";
+import bgImage from "../assets/bg.png";
+import brg2Image from "../assets/brg2.jpg";
 
 const SliderWrapper = styled.div`
   position: relative;
@@ -81,21 +84,21 @@ const SliderButton = styled.button`
 
 const slides = [
   {
-    image: "/api/placeholder/1200/800",
+    image: brgImage,
     title: "Empowering Youth, Nourishing Communities",
     subtitle: "Join the Agri-Force: Cultivating Change, One Seed at a Time",
     cta: "Sow the Seeds of Change",
     link: "/get-involved",
   },
   {
-    image: "/api/placeholder/1200/800",
+    image: bgImage,
     title: "From Farm to Table, Youth Leading the Way",
     subtitle: "YAgrF: Growing a Sustainable Future for Kenya",
     cta: "Explore Our Impact",
     link: "/about#impact",
   },
   {
-    image: "/api/placeholder/1200/800",
+    image: brg2Image,
     title: "Your Support Harvests a Brighter Tomorrow",
     subtitle: "Invest in Kenyan Youth, Invest in Food Security",
     cta: "Donate Now",

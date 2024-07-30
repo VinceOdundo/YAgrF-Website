@@ -2,7 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import logo from "../assets/yagrf logo_.png";
 
+const Logo = styled.img`
+  width: 120px;
+  height: auto;
+`;
 const FooterWrapper = styled.footer`
   background-color: var(--primary-color);
   color: var(--accent-color);
@@ -64,6 +69,7 @@ const Footer = () => {
     <FooterWrapper>
       <FooterContent>
         <FooterSection>
+          <Logo src={logo} alt="Youth Agri-Force Logo" />
           <h3>Youth Agri-Force</h3>
           <p>Empowering youth through sustainable agriculture in Kenya.</p>
         </FooterSection>
