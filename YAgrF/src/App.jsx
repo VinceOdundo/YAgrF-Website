@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
@@ -8,11 +8,9 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ProgramsPage from "./pages/ProgramsPage";
-{
-  /*import GetInvolvedPage from "./pages/GetInvolvedPage";
-import NewsPage from "./pages/NewsPage";
-import ContactPage from "./pages/ContactPage";*/
-}
+import GetInvolvedPage from "./pages/GetInvolvedPage.jsx";
+import NewsPage from "./pages/NewsPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -52,14 +50,14 @@ const App = () => {
         <GlobalStyle />
         <Header />
         <MainContent>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/about" component={AboutPage} />
-            <Route path="/programs" component={ProgramsPage} />
-            {/*  <Route path="/get-involved" component={GetInvolvedPage} />
-            <Route path="/news" component={NewsPage} />
-            <Route path="/contact" component={ContactPage} /> */}
-          </Switch>
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/programs" element={<ProgramsPage />} />
+            <Route path="/get-involved" element={<GetInvolvedPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
         </MainContent>
         <Footer />
       </AppWrapper>

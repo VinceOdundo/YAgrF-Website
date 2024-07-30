@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Tree } from "lucide-react";
+import { Trees } from "lucide-react";
 
 const AboutWrapper = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ const AboutSection = () => {
         </AboutText>
       </AboutContent>
       <IconWrapper>
-        <Tree size={64} />
+        <Trees size={64} />
       </IconWrapper>
     </AboutWrapper>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Users, FileText, Handshake } from "lucide-react";
+import { FileText } from "lucide-react";
 
 const PageWrapper = styled.div`
   max-width: 1200px;
