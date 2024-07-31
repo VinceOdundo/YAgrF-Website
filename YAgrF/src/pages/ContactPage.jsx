@@ -1,38 +1,29 @@
 import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 
 const PageWrapper = styled.div`
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 7rem;
+  background: linear-gradient(135deg, #fabf11 0%, #91b71f 100%);
+  min-height: 100vh;
 `;
 
 const PageTitle = styled.h1`
-  color: var(--primary-color);
+  color: #ffffff;
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 2rem;
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 3px;
-    background-color: var(--secondary-color);
-  }
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   gap: 2rem;
-  background-color: var(--accent-color);
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   overflow: hidden;
 
   @media (max-width: 768px) {
@@ -52,66 +43,61 @@ const FormGroup = styled.div`
 const Label = styled.label`
   display: block;
   margin-bottom: 0.5rem;
-  color: var(--primary-color);
+  color: #ffffff;
   font-weight: bold;
 `;
 
 const Input = styled.input`
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid var(--secondary-color);
+  border: none;
   border-radius: 5px;
-  transition: border-color 0.3s ease;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transition: all 0.3s ease;
 
   &:focus {
     outline: none;
-    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.3);
   }
 `;
 
 const TextArea = styled.textarea`
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid var(--secondary-color);
+  border: none;
   border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   resize: vertical;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 
   &:focus {
     outline: none;
-    border-color: var(--primary-color);
-  }
-`;
-
-const pulse = keyframes`
-  0% {
-    box-shadow: 0 0 0 0 rgba(145, 183, 31, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(145, 183, 31, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(145, 183, 31, 0);
+    background: rgba(255, 255, 255, 0.3);
   }
 `;
 
 const SubmitButton = styled.button`
-  background-color: var(--secondary-color);
-  color: var(--accent-color);
+  background: linear-gradient(
+    45deg,
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  color: #ffffff;
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${pulse} 2s infinite;
 
   &:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   }
 
   svg {
@@ -121,8 +107,8 @@ const SubmitButton = styled.button`
 
 const ContactInfo = styled.div`
   flex: 1;
-  background-color: var(--primary-color);
-  color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -133,6 +119,7 @@ const InfoItem = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  color: #ffffff;
 `;
 
 const IconWrapper = styled.div`
@@ -144,6 +131,7 @@ const MapWrapper = styled.div`
   margin-top: 2rem;
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 `;
 
 const ContactPage = () => {

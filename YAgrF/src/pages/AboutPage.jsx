@@ -7,9 +7,9 @@ import propImage2 from "../assets/edwin photo.jpg";
 import partnerLogo from "../assets/yagrf logo_.png";
 
 const PageWrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 7rem;
+  background: linear-gradient(135deg, #e0e5ec 0%, #e0e5ec 100%);
+  min-height: 100vh;
 `;
 
 const PageTitle = styled.h1`
@@ -17,10 +17,21 @@ const PageTitle = styled.h1`
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 `;
-
 const Section = styled.section`
   margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: #e0e5ec;
+`;
+
+const Section1 = styled.section`
+  margin-bottom: 3rem;
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: #e0e5ec;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
 `;
 
 const SectionTitle = styled.h2`
@@ -37,6 +48,16 @@ const TeamGrid = styled.div`
 
 const TeamMember = styled.div`
   text-align: center;
+  padding: 1.5rem;
+  border-radius: 15px;
+  background-color: #e0e5ec;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 `;
 
 const TeamMemberImage = styled.img`
@@ -45,6 +66,7 @@ const TeamMemberImage = styled.img`
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 const TeamMemberName = styled.h3`
@@ -57,10 +79,11 @@ const TeamMemberRole = styled.p`
 `;
 
 const FinancialReport = styled.div`
-  background-color: var(--accent-color);
-  border-radius: 10px;
+  background-color: #e0e5ec;
+  border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -80,7 +103,7 @@ const PartnerLogosWrapper = styled.div`
   position: relative;
   max-width: 800px;
   margin: 0 auto;
-  overflow: show;
+  overflow: hidden;
 `;
 
 const PartnerLogos = styled.div`
@@ -96,7 +119,7 @@ const PartnerLogo = styled.img`
   ${(props) =>
     props.isFocused
       ? `
-    transform: scale(0.8);
+    transform: scale(1.1);
     filter: none;
   `
       : `
@@ -119,6 +142,8 @@ const Dot = styled.button`
   margin: 0 5px;
   border: none;
   cursor: pointer;
+  box-shadow: 3px 3px 6px rgb(163, 177, 198, 0.6),
+    -3px -3px 6px rgba(255, 255, 255, 0.5);
 `;
 
 const AboutPage = () => {
@@ -145,7 +170,7 @@ const AboutPage = () => {
     <PageWrapper>
       <PageTitle>About Youth Agri-Force</PageTitle>
 
-      <Section>
+      <Section1>
         <SectionTitle>Our Story</SectionTitle>
         <p>
           Founded in 2021, YAgrF emerged from a shared vision: to empower Kenyan
@@ -154,7 +179,7 @@ const AboutPage = () => {
           nourishes communities, protects the environment, and builds a
           prosperous future for Kenya.
         </p>
-      </Section>
+      </Section1>
 
       <Section>
         <SectionTitle>Our Team</SectionTitle>
@@ -196,7 +221,7 @@ const AboutPage = () => {
         </FinancialReport>
       </Section>
 
-      <Section>
+      <Section1>
         <SectionTitle>Our Partners</SectionTitle>
         <PartnerLogosWrapper>
           <PartnerLogos
@@ -224,7 +249,7 @@ const AboutPage = () => {
             />
           ))}
         </NavigationDots>
-      </Section>
+      </Section1>
     </PageWrapper>
   );
 };

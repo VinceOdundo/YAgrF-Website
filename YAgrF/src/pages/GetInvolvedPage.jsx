@@ -1,28 +1,54 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { UserPlus, DollarSign, Handshake } from "lucide-react";
 
+const auroraBackground = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
+
 const PageWrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 7rem;
+  background: linear-gradient(
+    -135deg,
+    rgba(13, 60, 0, 0.7),
+    rgba(145, 183, 31, 0.7),
+    rgba(13, 60, 0, 0.7)
+  );
+  background-size: 400% 400%;
+  animation: ${auroraBackground} 15s ease infinite;
+  min-height: 100vh;
 `;
 
 const PageTitle = styled.h1`
-  color: var(--primary-color);
+  color: #ffffff;
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const Section = styled.section`
   margin-bottom: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 `;
 
 const SectionTitle = styled.h2`
-  color: var(--secondary-color);
+  color: #ffffff;
   font-size: 2rem;
   margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
 const SectionContent = styled.div`
@@ -37,7 +63,13 @@ const SectionContent = styled.div`
 
 const IconWrapper = styled.div`
   font-size: 3rem;
-  color: var(--secondary-color);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const TextContent = styled.div`
@@ -48,20 +80,27 @@ const Paragraph = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
+  color: #ffffff;
 `;
 
 const CTAButton = styled.a`
   display: inline-block;
-  background-color: var(--secondary-color);
-  color: var(--accent-color);
+  background: linear-gradient(
+    45deg,
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  color: #ffffff;
   padding: 0.75rem 1.5rem;
-  border-radius: 5px;
+  border-radius: 25px;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   }
 `;
 

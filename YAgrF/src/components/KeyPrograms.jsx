@@ -4,20 +4,26 @@ import { Users, ShoppingBasket, Leaf } from "lucide-react";
 
 const ProgramsWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: #e0e5ec;
+  border-radius: 20px;
 `;
 
 const ProgramCard = styled.div`
-  background-color: var(--accent-color);
-  border-radius: 10px;
+  background-color: #e0e5ec;
+  border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
 
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 12px 12px 20px rgb(163, 177, 198, 0.8),
+      -12px -12px 20px rgba(255, 255, 255, 0.8);
   }
 `;
 
@@ -25,6 +31,11 @@ const ProgramIcon = styled.div`
   font-size: 2rem;
   color: var(--secondary-color);
   margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: inset 5px 5px 10px rgb(163, 177, 198, 0.6),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.5);
 `;
 
 const ProgramTitle = styled.h3`
@@ -36,6 +47,7 @@ const ProgramTitle = styled.h3`
 const ProgramDescription = styled.p`
   font-size: 1rem;
   line-height: 1.5;
+  color: #555;
 `;
 
 const programs = [

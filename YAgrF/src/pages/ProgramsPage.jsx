@@ -3,31 +3,38 @@ import styled from "styled-components";
 import { Users, ShoppingBasket, Leaf } from "lucide-react";
 
 const PageWrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 7rem;
+  background: linear-gradient(135deg, #91b71f 0%, #fabf11 100%);
+  min-height: 100vh;
 `;
 
 const PageTitle = styled.h1`
-  color: var(--primary-color);
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  color: #ffffff;
+  font-size: 3rem;
+  margin-bottom: 3rem;
   text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const ProgramSection = styled.section`
   margin-bottom: 4rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 `;
 
 const ProgramTitle = styled.h2`
-  color: var(--secondary-color);
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
 
   svg {
     margin-right: 1rem;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
   }
 `;
 
@@ -45,19 +52,53 @@ const ProgramImage = styled.img`
   width: 300px;
   height: 200px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const ProgramDescription = styled.div`
   flex: 1;
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1.6;
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+
+      &:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #fda085;
+      }
+    }
+  }
 `;
 
 const TestimonialBox = styled.blockquote`
-  background-color: var(--accent-color);
-  border-left: 5px solid var(--secondary-color);
-  padding: 1rem;
-  margin-top: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 5px solid #fda085;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
   font-style: italic;
+  border-radius: 0 15px 15px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 `;
 
 const ProgramsPage = () => {
@@ -67,7 +108,7 @@ const ProgramsPage = () => {
 
       <ProgramSection>
         <ProgramTitle>
-          <Users size={32} />
+          <Users size={40} />
           Youth Agri-Force Pilot Project
         </ProgramTitle>
         <ProgramContent>
@@ -101,7 +142,7 @@ const ProgramsPage = () => {
 
       <ProgramSection>
         <ProgramTitle>
-          <ShoppingBasket size={32} />
+          <ShoppingBasket size={40} />
           Community Food Distribution
         </ProgramTitle>
         <ProgramContent>
@@ -135,7 +176,7 @@ const ProgramsPage = () => {
 
       <ProgramSection>
         <ProgramTitle>
-          <Leaf size={32} />
+          <Leaf size={40} />
           Environmental Stewardship
         </ProgramTitle>
         <ProgramContent>

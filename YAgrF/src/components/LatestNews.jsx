@@ -14,14 +14,16 @@ const NewsWrapper = styled.div`
 `;
 
 const NewsCard = styled.div`
-  background-color: var(--accent-color);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
   }
 `;
 
@@ -60,13 +62,22 @@ const NewsExcerpt = styled.p`
 `;
 
 const NewsLink = styled(Link)`
-  color: var(--secondary-color);
+  display: inline-block;
+  color: white;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease;
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
 
   &:hover {
-    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
 `;
 

@@ -4,14 +4,31 @@ import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import logo from "../assets/yagrf logo_.png";
 
-const Logo = styled.img`
-  width: 120px;
-  height: auto;
-`;
 const FooterWrapper = styled.footer`
-  background-color: var(--primary-color);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   color: var(--accent-color);
   padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+  }
 `;
 
 const FooterContent = styled.div`
@@ -20,12 +37,26 @@ const FooterContent = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
+  position: relative;
+  z-index: 1;
 `;
 
 const FooterSection = styled.div`
   h3 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    color: #ffffff;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background-color: var(--accent-color);
+    }
   }
 `;
 
@@ -34,10 +65,11 @@ const FooterLink = styled(Link)`
   text-decoration: none;
   display: block;
   margin-bottom: 0.5rem;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    color: var(--secondary-color);
+    color: #ffffff;
+    transform: translateX(5px);
   }
 `;
 
@@ -50,11 +82,28 @@ const SocialLinks = styled.div`
 const SocialIcon = styled.a`
   color: var(--accent-color);
   font-size: 1.5rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
 
   &:hover {
-    color: var(--secondary-color);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
   }
+`;
+
+const Logo = styled.img`
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.5));
 `;
 
 const Copyright = styled.div`
@@ -62,6 +111,7 @@ const Copyright = styled.div`
   margin-top: 2rem;
   padding-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
 `;
 
 const Footer = () => {
@@ -96,28 +146,28 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Facebook />
+              <Facebook size={20} />
             </SocialIcon>
             <SocialIcon
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Twitter />
+              <Twitter size={20} />
             </SocialIcon>
             <SocialIcon
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Instagram />
+              <Instagram size={20} />
             </SocialIcon>
             <SocialIcon
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Linkedin />
+              <Linkedin size={20} />
             </SocialIcon>
           </SocialLinks>
         </FooterSection>

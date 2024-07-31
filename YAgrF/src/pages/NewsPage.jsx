@@ -7,9 +7,9 @@ import blogImage1 from "../assets/bg.png";
 import blogImage2 from "../assets/brg2.jpg";
 
 const NewsPageWrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 7rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
 `;
 
 const PageTitle = styled.h1`
@@ -17,19 +17,34 @@ const PageTitle = styled.h1`
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const SearchBar = styled.div`
   display: flex;
   margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 0.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 `;
 
 const SearchInput = styled.input`
   flex-grow: 1;
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  border: 2px solid var(--secondary-color);
-  border-radius: 5px 0 0 5px;
+  border: none;
+  background: transparent;
+  color: var(--primary-color);
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const SearchButton = styled.button`
@@ -38,12 +53,13 @@ const SearchButton = styled.button`
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  border-radius: 0 5px 5px 0;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 
   &:hover {
-    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -54,14 +70,15 @@ const NewsGrid = styled.div`
 `;
 
 const NewsCard = styled.div`
-  background-color: var(--accent-color);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 20px 20px 60px #d0d0d0, -20px -20px 60px #ffffff;
+  transition: all 0.3s ease;
 
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 25px 25px 75px #c1c1c1, -25px -25px 75px #ffffff;
   }
 `;
 
@@ -97,16 +114,18 @@ const NewsExcerpt = styled.p`
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1rem;
+  color: var(--primary-color);
 `;
 
 const NewsLink = styled(Link)`
   color: var(--secondary-color);
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 
   &:hover {
     color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -117,19 +136,25 @@ const Pagination = styled.div`
 `;
 
 const PageButton = styled.button`
-  background-color: ${(props) =>
-    props.active ? "var(--secondary-color)" : "var(--accent-color)"};
-  color: ${(props) =>
-    props.active ? "var(--accent-color)" : "var(--primary-color)"};
-  border: 1px solid var(--secondary-color);
+  background: ${(props) =>
+    props.active
+      ? "linear-gradient(145deg, #e6e6e6, #ffffff)"
+      : "linear-gradient(145deg, #ffffff, #e6e6e6)"};
+  color: var(--primary-color);
+  border: none;
   padding: 0.5rem 1rem;
   margin: 0 0.25rem;
   cursor: pointer;
+  border-radius: 10px;
+  box-shadow: ${(props) =>
+    props.active
+      ? "inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff"
+      : "5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff"};
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: var(--primary-color);
-    color: var(--accent-color);
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    box-shadow: inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff;
   }
 `;
 

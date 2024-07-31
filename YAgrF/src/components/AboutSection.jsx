@@ -1,16 +1,26 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Trees } from "lucide-react";
 
+const gradientAnimation = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
+
 const AboutWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 2rem;
+   {
+  }
 
   @media (max-width: 768px) {
     flex-direction: column;
+    padding: 2rem;
   }
 `;
 
@@ -20,19 +30,25 @@ const AboutContent = styled.div`
 
 const AboutTitle = styled.h3`
   color: var(--primary-color);
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const AboutText = styled.p`
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.8);
 `;
 
 const IconWrapper = styled.div`
   flex: 0 0 auto;
   font-size: 4rem;
   color: var(--secondary-color);
+  background: linear-gradient(135deg, #91b71f, #0d3c00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ${gradientAnimation} 5s ease infinite;
 `;
 
 const AboutSection = () => {
@@ -48,7 +64,7 @@ const AboutSection = () => {
         </AboutText>
       </AboutContent>
       <IconWrapper>
-        <Trees size={64} />
+        <Trees size={96} />
       </IconWrapper>
     </AboutWrapper>
   );
