@@ -134,8 +134,8 @@ const Footer = () => {
         </FooterSection>
         <FooterSection>
           <h3>Contact</h3>
-          <p>123 Farming Street, Nairobi, Kenya</p>
-          <p>Phone: +254 123 456 789</p>
+          <p>Youth Agri-Force Campus, Siaya, Kenya</p>
+          <p>Phone: +254 743 049 944</p>
           <p>Email: info@yagrf.org</p>
         </FooterSection>
         <FooterSection>

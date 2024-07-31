@@ -216,7 +216,7 @@ const ContactPage = () => {
               <IconWrapper>
                 <Phone size={24} />
               </IconWrapper>
-              <div>+254 123 456 789</div>
+              <div>+254 743 049 944</div>
             </InfoItem>
             <InfoItem>
               <IconWrapper>
@@ -228,7 +228,7 @@ const ContactPage = () => {
               <IconWrapper>
                 <MapPin size={24} />
               </IconWrapper>
-              <div>123 Farmer's Lane, Nairobi, Kenya</div>
+              <div>Youth Agri-Force Campus, Siaya, Kenya</div>
             </InfoItem>
           </div>
           <MapWrapper>
