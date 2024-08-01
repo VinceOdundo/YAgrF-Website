@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
+import emailjs from "emailjs-com";
 
 const PageWrapper = styled.div`
   margin: 0 auto;
@@ -134,22 +135,125 @@ const MapWrapper = styled.div`
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 `;
 
+const CaptchaWrapper = styled.div`
+  margin-bottom: 1.5rem;
+`;
+
+const CaptchaQuestion = styled.p`
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+`;
+
+const ErrorMessage = styled.p`
+  color: #ff6b6b;
+  margin-top: 0.5rem;
+`;
+
+const SuccessMessage = styled.p`
+  color: #51cf66;
+  margin-top: 0.5rem;
+`;
+
+const LoadingOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
+    captcha: "",
   });
+
+  const [captchaQuestion, setCaptchaQuestion] = useState("");
+  const [captchaAnswer, setCaptchaAnswer] = useState("");
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const generateCaptcha = () => {
+    const num1 = Math.floor(Math.random() * 10);
+    const num2 = Math.floor(Math.random() * 10);
+    setCaptchaQuestion(`What is ${num1} + ${num2}?`);
+    setCaptchaAnswer((num1 + num2).toString());
+  };
+
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear error when user starts typing
+    setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(formData.email))
+      newErrors.email = "Email is invalid";
+    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    if (formData.captcha !== captchaAnswer)
+      newErrors.captcha = "Incorrect captcha answer";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setSuccessMessage("");
+
+    if (!validateForm()) return;
+
+    setIsLoading(true);
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      to_email: "info@yagrf.org",
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.REACT_APP_EMAILJS_USER_ID
+      );
+      setSuccessMessage("Your message has been sent successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        captcha: "",
+      });
+      generateCaptcha();
+    } catch (error) {
+      console.error("Failed to send the message:", error);
+      setErrors({
+        submit: "Failed to send the message. Please try again later.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -168,6 +272,7 @@ const ContactPage = () => {
               required
               placeholder="Your Name"
             />
+            {errors.name && <ErrorMessage>{errors.name}</ErrorMessage>}
           </FormGroup>
           <FormGroup>
             <Label htmlFor="email">Email</Label>
@@ -180,6 +285,7 @@ const ContactPage = () => {
               required
               placeholder="your.email@example.com"
             />
+            {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
           </FormGroup>
           <FormGroup>
             <Label htmlFor="subject">Subject</Label>
@@ -192,6 +298,7 @@ const ContactPage = () => {
               required
               placeholder="How can we help you?"
             />
+            {errors.subject && <ErrorMessage>{errors.subject}</ErrorMessage>}
           </FormGroup>
           <FormGroup>
             <Label htmlFor="message">Message</Label>
@@ -204,12 +311,33 @@ const ContactPage = () => {
               required
               placeholder="Tell us more about your inquiry..."
             ></TextArea>
+            {errors.message && <ErrorMessage>{errors.message}</ErrorMessage>}
           </FormGroup>
-          <SubmitButton type="submit">
-            Send Message
-            <Send size={18} />
+          <CaptchaWrapper>
+            <CaptchaQuestion>{captchaQuestion}</CaptchaQuestion>
+            <Input
+              type="text"
+              name="captcha"
+              value={formData.captcha}
+              onChange={handleChange}
+              required
+              placeholder="Enter the answer"
+            />
+            {errors.captcha && <ErrorMessage>{errors.captcha}</ErrorMessage>}
+          </CaptchaWrapper>
+          <SubmitButton type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <Loader size={18} />
+            ) : (
+              <>
+                Send Message <Send size={18} />
+              </>
+            )}
           </SubmitButton>
+          {errors.submit && <ErrorMessage>{errors.submit}</ErrorMessage>}
+          {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
         </ContactForm>
+
         <ContactInfo>
           <div>
             <InfoItem>
@@ -244,6 +372,11 @@ const ContactPage = () => {
           </MapWrapper>
         </ContactInfo>
       </ContentWrapper>
+      {isLoading && (
+        <LoadingOverlay>
+          <Loader size={48} color="#ffffff" />
+        </LoadingOverlay>
+      )}
     </PageWrapper>
   );
 };
