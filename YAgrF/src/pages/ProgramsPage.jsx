@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Users, ShoppingBasket, Leaf } from "lucide-react";
+import ProgPhoto1 from "../assets/aggra_.png";
+import ProgPhoto2 from "../assets/aggra.png";
 
 const PageWrapper = styled.div`
   padding: 7rem;
@@ -80,7 +82,7 @@ const ProgramDescription = styled.div`
         content: "•";
         position: absolute;
         left: 0;
-        color: #fda085;
+        color: #0d3c00;
       }
     }
   }
@@ -88,7 +90,7 @@ const ProgramDescription = styled.div`
 
 const TestimonialBox = styled.blockquote`
   background-color: rgba(255, 255, 255, 0.1);
-  border-left: 5px solid #fda085;
+  border-left: 5px solid #0d3c00;
   padding: 1.5rem;
   margin-top: 1.5rem;
   font-style: italic;
@@ -112,10 +114,7 @@ const ProgramsPage = () => {
           Youth Agri-Force Pilot Project
         </ProgramTitle>
         <ProgramContent>
-          <ProgramImage
-            src="/api/placeholder/300/200"
-            alt="Youth Agri-Force Pilot Project"
-          />
+          <ProgramImage src={ProgPhoto1} alt="Youth Agri-Force Pilot Project" />
           <ProgramDescription>
             <p>
               Our flagship program provides comprehensive training, mentorship,
@@ -146,10 +145,7 @@ const ProgramsPage = () => {
           Community Food Distribution
         </ProgramTitle>
         <ProgramContent>
-          <ProgramImage
-            src="/api/placeholder/300/200"
-            alt="Community Food Distribution"
-          />
+          <ProgramImage src={ProgPhoto2} alt="Community Food Distribution" />
           <ProgramDescription>
             <p>
               We believe that everyone deserves access to nutritious food.
@@ -180,10 +176,7 @@ const ProgramsPage = () => {
           Environmental Stewardship
         </ProgramTitle>
         <ProgramContent>
-          <ProgramImage
-            src="/api/placeholder/300/200"
-            alt="Environmental Stewardship"
-          />
+          <ProgramImage src={ProgPhoto1} alt="Environmental Stewardship" />
           <ProgramDescription>
             <p>
               We are committed to protecting our planet and promoting

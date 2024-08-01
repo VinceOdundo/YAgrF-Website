@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin, Send } from "lucide-react";
 const PageWrapper = styled.div`
   margin: 0 auto;
   padding: 7rem;
-  background: linear-gradient(135deg, #fabf11 0%, #91b71f 100%);
+  background: linear-gradient(-45deg, #0d3c00 0%, #91b71f 100%);
   min-height: 100vh;
 `;
 
@@ -124,7 +124,7 @@ const InfoItem = styled.div`
 
 const IconWrapper = styled.div`
   margin-right: 1rem;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 `;
 
 const MapWrapper = styled.div`
