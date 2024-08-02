@@ -69,7 +69,7 @@ const NavLinks = styled.ul`
   padding: 0;
 
   @media (max-width: 768px) {
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+    display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
     flex-direction: column;
     position: absolute;
     top: 100%;
@@ -125,7 +125,7 @@ const MenuButton = styled.button`
 `;
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [$isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -137,7 +137,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen(!$isOpen);
 
   return (
     <HeaderWrapper
@@ -149,9 +149,9 @@ const Header = () => {
           <LogoText to="/">Youth Agri-Force</LogoText>
         </div>
         <MenuButton onClick={toggleMenu}>
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {$isOpen ? <X size={24} /> : <Menu size={24} />}
         </MenuButton>
-        <NavLinks isOpen={isOpen}>
+        <NavLinks $isOpen={$isOpen}>
           <NavItem>
             <NavLink to="/" onClick={() => setIsOpen(false)}>
               <Home size={18} /> Home
